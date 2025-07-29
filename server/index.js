@@ -1,8 +1,9 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
 const http = require('http');
 const socketIo = require('socket.io');
+const { connectDB } = require('./config/database');
+const DatabaseUtils = require('./utils/database');
 require('dotenv').config();
 
 const authRoutes = require('./routes/auth');
@@ -44,12 +45,52 @@ app.use('/api/messages', messageRoutes);
 app.use('/api/groups', groupRoutes);
 
 // Health check endpoint
-app.get('/health', (req, res) => {
-  res.json({ 
-    status: 'OK', 
-    timestamp: new Date().toISOString(),
-    environment: process.env.NODE_ENV || 'development'
-  });
+app.get('/health', async (req, res) => {
+  try {
+    const dbHealth = await DatabaseUtils.healthCheck();
+    res.json({ 
+      status: 'OK', 
+      timestamp: new Date().toISOString(),
+      environment: process.env.NODE_ENV || 'development',
+      database: dbHealth
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: 'ERROR',
+      timestamp: new Date().toISOString(),
+      error: error.message
+    });
+  }
+});
+
+// Database stats endpoint
+app.get('/api/database/stats', async (req, res) => {
+  try {
+    const stats = await DatabaseUtils.getStats();
+    res.json(stats);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Database collections stats endpoint
+app.get('/api/database/collections', async (req, res) => {
+  try {
+    const stats = await DatabaseUtils.getAllCollectionsStats();
+    res.json(stats);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Database backup info endpoint
+app.get('/api/database/backup-info', async (req, res) => {
+  try {
+    const backupInfo = await DatabaseUtils.getBackupInfo();
+    res.json(backupInfo);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
 
 // Socket.io connection handling
@@ -108,13 +149,18 @@ io.on('connection', (socket) => {
   });
 });
 
-// MongoDB connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/yazisma', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log('MongoDB connected'))
-.catch(err => console.log('MongoDB connection error:', err));
+// Initialize database connection
+connectDB()
+  .then(async () => {
+    console.log('Database initialized successfully');
+    // Create indexes for better performance
+    try {
+      await DatabaseUtils.createIndexes();
+    } catch (error) {
+      console.log('Index creation error:', error);
+    }
+  })
+  .catch(err => console.log('Database initialization error:', err));
 
 const PORT = process.env.PORT || 5001;
 server.listen(PORT, () => {
