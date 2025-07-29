@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: yazisma-backend
+    name: ytkgroup-backend
     env: node
     buildCommand: cd server && npm install
     startCommand: cd server && npm start

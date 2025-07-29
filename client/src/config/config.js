@@ -6,7 +6,7 @@ const config = {
   SOCKET_URL: process.env.REACT_APP_SOCKET_URL || 'http://localhost:5001',
   
   // App name
-  APP_NAME: 'Yazışma',
+  APP_NAME: 'YTK Group Messaging',
   
   // Version
   VERSION: '1.0.0',

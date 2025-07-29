@@ -20,8 +20,8 @@ const corsOptions = {
     'http://localhost:3000',
     'http://localhost:3500',
     'http://localhost:3501',
-    'https://your-domain.com', // Production domain
-    'https://www.your-domain.com', // Production domain with www
+    'https://ytkgroup.org', // Production domain
+    'https://www.ytkgroup.org', // Production domain with www
     process.env.FRONTEND_URL // Environment variable for frontend URL
   ].filter(Boolean), // Remove undefined values
   credentials: true,

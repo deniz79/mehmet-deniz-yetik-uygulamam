@@ -9,7 +9,7 @@ const connectDB = async () => {
       return db;
     }
 
-    const conn = await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/yazisma', {
+    const conn = await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/ytkgroup', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });

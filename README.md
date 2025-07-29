@@ -1,6 +1,6 @@
-# Yazışma - Sosyal Mesajlaşma Platformu
+# YTK Group - Modern Mesajlaşma Platformu
 
-Modern ve kullanıcı dostu bir sosyal mesajlaşma platformu.
+YTK Group için modern ve kullanıcı dostu mesajlaşma platformu.
 
 ## 🚀 Özellikler
 
@@ -74,7 +74,7 @@ npm start
 
 ## 🌐 Canlı Demo
 
-[Demo Linki Buraya Gelecek]
+[https://ytkgroup.org](https://ytkgroup.org)
 
 ## 📝 Lisans
 
@@ -82,9 +82,9 @@ MIT License
 
 ## 👥 Katkıda Bulunanlar
 
-- [Your Name](https://github.com/your-username)
+- [YTK Group](https://ytkgroup.org)
 
 ## 📞 İletişim
 
-- Email: your-email@example.com
-- GitHub: [@your-username](https://github.com/your-username) 
+- Website: [https://ytkgroup.org](https://ytkgroup.org)
+- Email: info@ytkgroup.org 

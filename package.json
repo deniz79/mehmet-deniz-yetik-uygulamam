@@ -1,13 +1,17 @@
 {
-  "name": "yazisma",
+  "name": "ytkgroup-messaging",
   "version": "1.0.0",
-  "description": "Modern messaging platform",
+  "description": "Modern messaging platform for YTK Group",
   "main": "server/index.js",
   "scripts": {
     "start": "cd server && npm start",
-    "dev": "cd server && npm run dev",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm start",
     "build": "cd client && npm run build",
-    "install-all": "npm install && cd server && npm install && cd ../client && npm install"
+    "install-all": "npm install && cd server && npm install && cd ../client && npm install",
+    "deploy": "npm run build && npm run deploy-pages",
+    "deploy-pages": "gh-pages -d client/build"
   },
   "engines": {
     "node": ">=18.0.0"
@@ -22,8 +26,13 @@
     "real-time",
     "socket.io",
     "react",
-    "node.js"
+    "node.js",
+    "ytkgroup"
   ],
-  "author": "Deniz Yetik",
-  "license": "MIT"
+  "author": "YTK Group",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "gh-pages": "^5.0.0"
+  }
 } 

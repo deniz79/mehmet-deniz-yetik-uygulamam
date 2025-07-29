@@ -1,7 +1,7 @@
 {
-  "name": "yazisma-server",
+  "name": "ytkgroup-server",
   "version": "1.0.0",
-  "description": "Backend API for messaging platform",
+  "description": "Backend API for YTK Group messaging platform",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",

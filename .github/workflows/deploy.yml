@@ -32,4 +32,5 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./client/build
-        cname: ytkgroup.org 
+        cname: ytkgroup.org
+        force_orphan: true 
