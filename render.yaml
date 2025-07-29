@@ -8,4 +8,8 @@ services:
       - key: NODE_ENV
         value: production
       - key: PORT
-        value: 10000 
+        value: 10000
+      - key: MONGODB_URI
+        value: mongodb+srv://ytkgroup_admin:YtkGroup2024!@cluster0.j2evm8m.mongodb.net/ytkgroup?retryWrites=true&w=majority&appName=Cluster0
+      - key: JWT_SECRET
+        value: ytkgroup-super-secret-jwt-key-2024 
