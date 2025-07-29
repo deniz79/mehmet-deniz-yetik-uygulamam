@@ -1,21 +1,20 @@
 {
-  "name": "yazisma-platform",
+  "name": "yazisma",
   "version": "1.0.0",
-  "description": "Modern mesajlaşma platformu",
-  "main": "index.js",
+  "description": "Modern messaging platform",
+  "main": "server/index.js",
   "scripts": {
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "cd server && npm run dev",
-    "client": "cd client && npm start",
-    "build": "cd client && npm run build",
-    "build:server": "cd server && npm run build",
-    "install-all": "npm install && cd server && npm install && cd ../client && npm install",
     "start": "cd server && npm start",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy:prepare": "npm run install-all && npm run build",
-    "deploy:vercel": "vercel --prod",
-    "deploy:railway": "railway up",
-    "deploy:render": "render deploy"
+    "dev": "cd server && npm run dev",
+    "build": "cd client && npm run build",
+    "install-all": "npm install && cd server && npm install && cd ../client && npm install"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/deniz79/mehmet-deniz-yetik-uygulamam.git"
   },
   "keywords": [
     "messaging",
@@ -23,16 +22,8 @@
     "real-time",
     "socket.io",
     "react",
-    "node.js",
-    "mongodb"
+    "node.js"
   ],
-  "author": "Your Name",
-  "license": "MIT",
-  "devDependencies": {
-    "concurrently": "^7.6.0"
-  },
-  "engines": {
-    "node": ">=14.0.0",
-    "npm": ">=6.0.0"
-  }
+  "author": "Deniz Yetik",
+  "license": "MIT"
 } 
